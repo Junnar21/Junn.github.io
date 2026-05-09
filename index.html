@@ -6,95 +6,139 @@
 <title>Junnar Vitug | Portfolio</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Segoe UI',sans-serif;background:#0d1117;color:#fff;min-height:100vh;}
+  body{font-family:'Segoe UI',sans-serif;color:#fff;min-height:100vh;overflow-x:hidden;}
+
+  /* SKY BACKGROUND */
+  .sky-bg{
+    position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;
+    background: linear-gradient(180deg,
+      #1a3a5c 0%,
+      #2e6a9e 20%,
+      #5b9fd4 40%,
+      #a8cce0 55%,
+      #d4a96a 70%,
+      #c4845a 85%,
+      #8b4e3a 100%);
+  }
+  .sky-bg::after{
+    content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.45);
+  }
+
+  /* CLOUDS */
+  .clouds{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:hidden;}
+  .cloud{position:absolute;background:rgba(255,255,255,0.18);border-radius:50px;filter:blur(18px);animation:drift linear infinite;}
+  .cloud:nth-child(1){width:380px;height:90px;top:8%;left:-20%;animation-duration:38s;opacity:0.5;}
+  .cloud:nth-child(2){width:260px;height:60px;top:20%;left:-10%;animation-duration:52s;opacity:0.35;animation-delay:-15s;}
+  .cloud:nth-child(3){width:440px;height:100px;top:35%;left:-25%;animation-duration:44s;opacity:0.4;animation-delay:-8s;}
+  .cloud:nth-child(4){width:300px;height:70px;top:55%;left:-15%;animation-duration:60s;opacity:0.3;animation-delay:-25s;}
+  .cloud:nth-child(5){width:500px;height:120px;top:65%;left:-30%;animation-duration:35s;opacity:0.45;animation-delay:-5s;}
+  .cloud:nth-child(6){width:200px;height:50px;top:80%;left:-10%;animation-duration:48s;opacity:0.25;animation-delay:-20s;}
+  .cloud:nth-child(7){width:350px;height:80px;top:12%;left:60%;animation-duration:55s;opacity:0.3;animation-delay:-30s;}
+  @keyframes drift{from{transform:translateX(0);}to{transform:translateX(130vw);}}
 
   /* NAV */
-  nav{display:flex;justify-content:space-between;align-items:center;padding:24px 60px;position:fixed;top:0;width:100%;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(8px);}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:24px 60px;position:fixed;top:0;width:100%;z-index:100;background:rgba(0,0,0,0.25);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.1);}
   .logo{font-size:1.2rem;font-weight:700;letter-spacing:2px;color:#fff;}
   .logo span{color:#4ade80;}
   .nav-links{display:flex;gap:36px;list-style:none;}
-  .nav-links a{color:#aaa;text-decoration:none;font-size:0.95rem;transition:color 0.2s;}
+  .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.95rem;transition:color 0.2s;}
   .nav-links a:hover{color:#4ade80;}
 
   /* HERO */
   .hero{min-height:100vh;display:flex;align-items:center;padding:100px 60px 60px;gap:60px;}
   .hero-left{flex:1;}
-  .hero-badge{background:#1a2a1a;border:1px solid #2d4a2d;border-radius:20px;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;margin-bottom:32px;font-size:0.85rem;color:#4ade80;}
+  .hero-badge{background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.25);border-radius:20px;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;margin-bottom:32px;font-size:0.85rem;color:#fff;}
   .badge-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;}
   @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
-  .hero-title{font-size:4.5rem;font-weight:700;line-height:1.1;margin-bottom:24px;}
+  .hero-title{font-size:4.5rem;font-weight:700;line-height:1.1;margin-bottom:24px;text-shadow:0 2px 20px rgba(0,0,0,0.4);}
   .hero-title .green{color:#4ade80;}
-  .hero-desc{color:#888;font-size:1.05rem;line-height:1.7;max-width:480px;margin-bottom:40px;}
+  .hero-desc{color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.7;max-width:480px;margin-bottom:40px;text-shadow:0 1px 8px rgba(0,0,0,0.3);}
   .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
-  .btn-primary{background:#4ade80;color:#0d1117;padding:14px 32px;border-radius:50px;font-weight:600;font-size:0.95rem;cursor:pointer;border:none;text-decoration:none;display:inline-block;}
-  .btn-secondary{background:transparent;color:#fff;padding:14px 32px;border-radius:50px;font-weight:600;font-size:0.95rem;cursor:pointer;border:1px solid #333;text-decoration:none;display:inline-block;}
+  .btn-primary{background:#4ade80;color:#0d1117;padding:14px 32px;border-radius:50px;font-weight:600;font-size:0.95rem;cursor:pointer;border:none;text-decoration:none;display:inline-block;transition:background 0.2s;}
+  .btn-secondary{background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);color:#fff;padding:14px 32px;border-radius:50px;font-weight:600;font-size:0.95rem;cursor:pointer;border:1px solid rgba(255,255,255,0.3);text-decoration:none;display:inline-block;transition:all 0.2s;}
   .btn-primary:hover{background:#22c55e;}
-  .btn-secondary:hover{border-color:#4ade80;color:#4ade80;}
+  .btn-secondary:hover{background:rgba(255,255,255,0.25);}
   .hero-right{flex:0 0 380px;position:relative;display:flex;justify-content:center;align-items:center;}
-  .hero-img-wrap{width:320px;height:420px;border-radius:30px;background:linear-gradient(135deg,#1a2a1a,#0d1a0d);border:1px solid #2d4a2d;display:flex;align-items:center;justify-content:center;}
-  .initials-circle{width:140px;height:140px;border-radius:50%;background:#1a3a1a;border:3px solid #4ade80;display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:700;color:#4ade80;}
-  .exp-badge{position:absolute;top:20px;right:-10px;background:#111820;border:1px solid #2d4a2d;border-radius:16px;padding:12px 18px;text-align:right;}
+  .hero-img-wrap{width:320px;height:420px;border-radius:30px;overflow:hidden;border:2px solid rgba(255,255,255,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.4);background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;}
+  .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .initials-circle{width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.1);border:3px solid #4ade80;display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:700;color:#4ade80;}
+  .exp-badge{position:absolute;top:20px;right:-10px;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:12px 18px;text-align:right;}
   .exp-badge .num{font-size:1.5rem;font-weight:700;color:#4ade80;}
-  .exp-badge .label{font-size:0.75rem;color:#888;line-height:1.4;}
-  .stats{display:flex;gap:40px;margin-top:60px;padding-top:40px;border-top:1px solid #1a1a1a;}
+  .exp-badge .label{font-size:0.75rem;color:rgba(255,255,255,0.7);line-height:1.4;}
+  .stats{display:flex;gap:40px;margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.15);}
   .stat-num{font-size:2rem;font-weight:700;color:#4ade80;}
-  .stat-label{font-size:0.85rem;color:#666;margin-top:4px;}
+  .stat-label{font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:4px;}
 
   /* SECTIONS */
-  section{padding:80px 60px;}
+  section{padding:80px 60px;position:relative;}
+  .section-inner{background:rgba(0,0,0,0.45);backdrop-filter:blur(16px);border-radius:24px;padding:48px;border:1px solid rgba(255,255,255,0.1);}
   .section-tag{color:#4ade80;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
-  .section-title{font-size:2.4rem;font-weight:700;margin-bottom:48px;}
+  .section-title{font-size:2.4rem;font-weight:700;margin-bottom:40px;color:#fff;}
 
   /* SKILLS */
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
-  .skill-card{background:#111820;border:1px solid #1e2a1e;border-radius:16px;padding:24px;transition:border-color 0.3s,transform 0.3s;}
-  .skill-card:hover{border-color:#4ade80;transform:translateY(-4px);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .skill-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:24px;transition:all 0.3s;}
+  .skill-card:hover{background:rgba(74,222,128,0.1);border-color:#4ade80;transform:translateY(-4px);}
   .skill-icon{font-size:2rem;margin-bottom:12px;}
-  .skill-name{font-weight:600;margin-bottom:6px;font-size:1rem;}
-  .skill-desc{font-size:0.85rem;color:#666;line-height:1.6;}
+  .skill-name{font-weight:600;margin-bottom:6px;font-size:1rem;color:#fff;}
+  .skill-desc{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6;}
 
   /* PROJECTS */
-  .alt-bg{background:#080d08;}
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
-  .project-card{background:#111820;border:1px solid #1e2a1e;border-radius:20px;padding:28px;transition:border-color 0.3s,transform 0.3s;}
-  .project-card:hover{border-color:#4ade80;transform:translateY(-4px);}
-  .project-tag{background:#1a2a1a;color:#4ade80;font-size:0.75rem;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:16px;}
-  .project-title{font-size:1.1rem;font-weight:600;margin-bottom:10px;}
-  .project-desc{font-size:0.9rem;color:#666;line-height:1.6;}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .project-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:28px;transition:all 0.3s;}
+  .project-card:hover{background:rgba(74,222,128,0.08);border-color:#4ade80;transform:translateY(-4px);}
+  .project-tag{background:rgba(74,222,128,0.2);color:#4ade80;font-size:0.75rem;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:16px;}
+  .project-title{font-size:1.1rem;font-weight:600;margin-bottom:10px;color:#fff;}
+  .project-desc{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.6;}
 
   /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-  .about-text{color:#888;line-height:1.9;font-size:1rem;}
-  .about-cards{display:flex;flex-direction:column;gap:16px;}
-  .about-card{background:#111820;border:1px solid #1e2a1e;border-radius:14px;padding:20px;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .about-text{color:rgba(255,255,255,0.75);line-height:1.9;font-size:1rem;}
+  .about-cards{display:flex;flex-direction:column;gap:14px;}
+  .about-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:18px;}
   .about-card-title{color:#4ade80;font-weight:600;margin-bottom:6px;}
-  .about-card-text{color:#aaa;font-size:0.9rem;line-height:1.6;}
+  .about-card-text{color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.6;}
 
   /* CONTACT */
-  .contact-box{background:#111820;border:1px solid #1e2a1e;border-radius:24px;padding:48px;text-align:center;max-width:600px;margin:0 auto;}
-  .contact-title{font-size:2rem;font-weight:700;margin-bottom:12px;}
-  .contact-desc{color:#666;margin-bottom:32px;line-height:1.7;}
+  .contact-box{text-align:center;max-width:600px;margin:0 auto;}
+  .contact-title{font-size:2rem;font-weight:700;margin-bottom:12px;color:#fff;}
+  .contact-desc{color:rgba(255,255,255,0.65);margin-bottom:32px;line-height:1.7;}
   .contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
-  .contact-link{background:#1a2a1a;border:1px solid #2d4a2d;color:#4ade80;padding:12px 24px;border-radius:50px;text-decoration:none;font-size:0.9rem;transition:background 0.2s;}
-  .contact-link:hover{background:#2d4a2d;}
+  .contact-link{background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;padding:12px 28px;border-radius:50px;text-decoration:none;font-size:0.9rem;transition:all 0.2s;}
+  .contact-link:hover{background:rgba(74,222,128,0.3);}
 
   /* FOOTER */
-  footer{text-align:center;padding:32px;color:#333;font-size:0.85rem;border-top:1px solid #111;}
+  footer{text-align:center;padding:32px;color:rgba(255,255,255,0.3);font-size:0.85rem;background:rgba(0,0,0,0.3);}
 
   /* RESPONSIVE */
   @media(max-width:768px){
     nav{padding:20px 24px;}
-    .nav-links{gap:20px;}
+    .nav-links{gap:16px;}
+    .nav-links a{font-size:0.85rem;}
     .hero{flex-direction:column;padding:100px 24px 60px;text-align:center;}
     .hero-title{font-size:3rem;}
     .hero-right{display:none;}
     .stats{justify-content:center;}
-    section{padding:60px 24px;}
+    section{padding:40px 20px;}
+    .section-inner{padding:28px 20px;}
     .about-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
+
+<!-- SKY BACKGROUND -->
+<div class="sky-bg"></div>
+<div class="clouds">
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+</div>
 
 <!-- NAVIGATION -->
 <nav>
@@ -143,10 +187,9 @@
   </div>
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <!-- Replace the initials circle below with your actual photo:
-           <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:30px;" alt="Junnar Vitug" />
-      -->
-      <img src="e80c9a33-c00c-4f21-9700-6058208c5f6f.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:30px;" alt="Junnar Vitug" />
+      <!-- Upload your photo to GitHub named "photo.jpg" and it will show here automatically -->
+      <img src="photo.jpg" alt="Junnar Vitug" onerror="this.style.display='none';document.getElementById('initials').style.display='flex';" />
+      <div class="initials-circle" id="initials" style="display:none;">JV</div>
     </div>
     <div class="exp-badge">
       <div class="num">7+</div>
@@ -157,109 +200,113 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-tag">What I Bring</div>
-  <div class="section-title">Skills & Expertise</div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon">🏗️</div>
-      <div class="skill-name">Site Engineering</div>
-      <div class="skill-desc">3 years managing construction sites and supervising high-rise building projects in the Philippines.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">✅</div>
-      <div class="skill-name">Quality Control & QA</div>
-      <div class="skill-desc">2 years ensuring construction quality standards and compliance on major building projects.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📋</div>
-      <div class="skill-name">Project Management</div>
-      <div class="skill-desc">2 years as Project-in-Charge overseeing high-rise building construction from start to finish.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">💻</div>
-      <div class="skill-name">Web Development</div>
-      <div class="skill-desc">Building modern websites using HTML, CSS, JavaScript and deploying via GitHub Pages.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📊</div>
-      <div class="skill-name">Data Analytics</div>
-      <div class="skill-desc">Pursuing data analysis skills with a focus on turning real-world data into actionable insights.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🔧</div>
-      <div class="skill-name">Building Maintenance</div>
-      <div class="skill-desc">Currently working in building maintenance in Canada, applying hands-on engineering expertise.</div>
+  <div class="section-inner">
+    <div class="section-tag">What I Bring</div>
+    <div class="section-title">Skills & Expertise</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🏗️</div>
+        <div class="skill-name">Site Engineering</div>
+        <div class="skill-desc">3 years managing construction sites and supervising high-rise building projects in the Philippines.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">✅</div>
+        <div class="skill-name">Quality Control & QA</div>
+        <div class="skill-desc">2 years ensuring construction quality standards and compliance on major building projects.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📋</div>
+        <div class="skill-name">Project Management</div>
+        <div class="skill-desc">2 years as Project-in-Charge overseeing high-rise building construction from start to finish.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <div class="skill-name">Web Development</div>
+        <div class="skill-desc">Building modern websites using HTML, CSS, JavaScript and deploying via GitHub Pages.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Data Analytics</div>
+        <div class="skill-desc">Pursuing data analysis skills with a focus on turning real-world data into actionable insights.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔧</div>
+        <div class="skill-name">Building Maintenance</div>
+        <div class="skill-desc">Currently working in building maintenance in Canada, applying hands-on engineering expertise.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="alt-bg">
-  <div class="section-tag">My Work</div>
-  <div class="section-title">Featured Projects</div>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-tag">Web Development</div>
-      <div class="project-title">Personal Portfolio Website</div>
-      <div class="project-desc">Designed and deployed this personal portfolio using HTML, CSS and GitHub Pages with a custom domain at junnarvitug.com.</div>
-    </div>
-    <div class="project-card">
-      <div class="project-tag">Civil Engineering</div>
-      <div class="project-title">High-Rise Building Project</div>
-      <div class="project-desc">Led construction management as Project-in-Charge for a high-rise building in the Philippines, overseeing quality, schedule, and safety.</div>
-    </div>
-    <div class="project-card">
-      <div class="project-tag">Data Analytics</div>
-      <div class="project-title">Data Analysis Projects</div>
-      <div class="project-desc">Ongoing data analysis projects as part of MIS studies, applying analytical thinking developed through years of engineering work.</div>
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-tag">My Work</div>
+    <div class="section-title">Featured Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-tag">Web Development</div>
+        <div class="project-title">Personal Portfolio Website</div>
+        <div class="project-desc">Designed and deployed this personal portfolio using HTML, CSS and GitHub Pages with a custom domain at junnarvitug.com.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Civil Engineering</div>
+        <div class="project-title">High-Rise Building Project</div>
+        <div class="project-desc">Led construction management as Project-in-Charge for a high-rise building in the Philippines, overseeing quality, schedule, and safety.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Data Analytics</div>
+        <div class="project-title">Data Analysis Projects</div>
+        <div class="project-desc">Ongoing data analysis projects as part of MIS studies, applying analytical thinking developed through years of engineering work.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-tag">My Story</div>
-  <div class="section-title">About Me</div>
-  <div class="about-grid">
-    <div>
-      <p class="about-text">
-        I'm a Civil Engineer from the Philippines with a Diploma in Civil Engineering and a BBA in Management Information Systems. Over 7 years in the construction industry, I progressed from Site Engineer to Quality Control & QA, and eventually led projects as Project-in-Charge on high-rise buildings.
-      </p>
-      <p class="about-text" style="margin-top:20px;">
-        Now based in Canada, I work in building maintenance while actively pursuing my passion for Web Development and Data Analytics — combining my strong engineering mindset with modern technology skills to build a new career in tech.
-      </p>
-    </div>
-    <div class="about-cards">
-      <div class="about-card">
-        <div class="about-card-title">🎓 Education</div>
-        <div class="about-card-text">Diploma in Civil Engineering<br>BBA in Management Information Systems</div>
+  <div class="section-inner">
+    <div class="section-tag">My Story</div>
+    <div class="section-title">About Me</div>
+    <div class="about-grid">
+      <div>
+        <p class="about-text">I'm a Civil Engineer from the Philippines with a Diploma in Civil Engineering and a BBA in Management Information Systems. Over 7 years in the construction industry, I progressed from Site Engineer to Quality Control & QA, and eventually led projects as Project-in-Charge on high-rise buildings.</p>
+        <p class="about-text" style="margin-top:20px;">Now based in Canada, I work in building maintenance while actively pursuing my passion for Web Development and Data Analytics — combining my strong engineering mindset with modern technology skills to build a new career in tech.</p>
       </div>
-      <div class="about-card">
-        <div class="about-card-title">📍 Location</div>
-        <div class="about-card-text">Based in Canada<br>Originally from the Philippines</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-title">🚀 Currently</div>
-        <div class="about-card-text">Building Maintenance Worker &amp; actively pursuing Web Development + Data Analytics</div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-title">🌐 Languages</div>
-        <div class="about-card-text">Filipino (Native) &bull; English (Fluent)</div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-title">🎓 Education</div>
+          <div class="about-card-text">Diploma in Civil Engineering<br>BBA in Management Information Systems</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">📍 Location</div>
+          <div class="about-card-text">Based in Canada<br>Originally from the Philippines</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">🚀 Currently</div>
+          <div class="about-card-text">Building Maintenance Worker &amp; actively pursuing Web Development + Data Analytics</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">🌐 Languages</div>
+          <div class="about-card-text">Filipino (Native) &bull; English (Fluent)</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="alt-bg">
-  <div class="contact-box">
-    <div class="section-tag" style="text-align:center;">Get In Touch</div>
-    <div class="contact-title">Let's Work Together</div>
-    <p class="contact-desc">Open to new opportunities in web development, data analytics, or engineering-related roles in Canada. Feel free to reach out!</p>
-    <div class="contact-links">
-      <a class="contact-link" href="mailto:your@email.com">✉ Email Me</a>
-      <a class="contact-link" href="https://linkedin.com/in/junnarvitug" target="_blank">LinkedIn</a>
-      <a class="contact-link" href="https://junnar21.github.io" target="_blank">GitHub</a>
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <div class="section-tag" style="text-align:center;">Get In Touch</div>
+      <div class="contact-title">Let's Work Together</div>
+      <p class="contact-desc">Open to new opportunities in web development, data analytics, or engineering-related roles in Canada. Feel free to reach out!</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:your@email.com">✉ Email Me</a>
+        <a class="contact-link" href="https://linkedin.com/in/junnarvitug" target="_blank">LinkedIn</a>
+        <a class="contact-link" href="https://junnar21.github.io" target="_blank">GitHub</a>
+      </div>
     </div>
   </div>
 </section>
