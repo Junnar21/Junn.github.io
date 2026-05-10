@@ -450,7 +450,7 @@
     <button class="btn-send" type="submit">Send Message 🚀</button>
   </form>
 </div>
-        <div class="success-msg" id="success-msg">✅ Thanks! Your message has been sent. I'll get back to you soon!</div>
+        
       </div>
     </div>
   </div>
@@ -472,15 +472,6 @@
     window.scrollTo({top: 0, behavior: 'smooth'});
     return false;
   }
-
-  function sendMsg() {
-    const name = document.getElementById('fname').value.trim();
-    const email = document.getElementById('femail').value.trim();
-    const msg = document.getElementById('fmsg').value.trim();
-    if (!name || !email || !msg) {
-      alert('Please fill in all fields!');
-      return;
-    }
     document.getElementById('success-msg').style.display = 'block';
     document.getElementById('fname').value = '';
     document.getElementById('femail').value = '';
