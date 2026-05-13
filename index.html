@@ -70,13 +70,81 @@
   .qcard-desc{font-size:0.78rem;color:rgba(255,255,255,0.5);}
 
   /* Hero photo */
-  .hero-right{flex:0 0 340px;position:relative;display:flex;justify-content:center;}
+  .hero-right{flex:0 0 340px;position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;}
   .photo-wrap{width:300px;height:400px;border-radius:28px;overflow:hidden;border:2px solid rgba(255,255,255,0.25);box-shadow:0 8px 40px rgba(0,0,0,0.45);background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;}
   .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;}
   .initials{width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.08);border:3px solid #4ade80;display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:700;color:#4ade80;}
-  .exp-pill{position:absolute;top:16px;right:-14px;background:rgba(0,0,0,0.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:10px 16px;text-align:right;}
+  .exp-pill{background:rgba(0,0,0,0.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:10px 16px;text-align:center;width:100%;}
   .exp-pill .num{font-size:1.4rem;font-weight:700;color:#4ade80;}
   .exp-pill .lbl{font-size:0.72rem;color:rgba(255,255,255,0.6);line-height:1.4;}
+
+  /* ✅ CV DOWNLOAD BUTTON */
+  .cv-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    background:rgba(74,222,128,0.15);
+    border:1px solid rgba(74,222,128,0.5);
+    color:#4ade80;
+    padding:12px 24px;
+    border-radius:50px;
+    font-size:0.9rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.25s;
+    font-family:'Segoe UI',sans-serif;
+  }
+  .cv-btn:hover{background:rgba(74,222,128,0.28);transform:translateY(-2px);box-shadow:0 4px 20px rgba(74,222,128,0.2);}
+
+  /* ✅ PASSWORD MODAL */
+  .modal-overlay{
+    display:none;position:fixed;top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(8px);
+    z-index:999;
+    align-items:center;justify-content:center;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal-box{
+    background:#0f1923;
+    border:1px solid rgba(74,222,128,0.3);
+    border-radius:24px;
+    padding:40px 36px;
+    width:340px;
+    text-align:center;
+    animation:fadeIn 0.3s ease;
+  }
+  .modal-lock{font-size:3rem;margin-bottom:14px;}
+  .modal-box h3{font-size:1.3rem;font-weight:700;margin-bottom:8px;}
+  .modal-box p{color:rgba(255,255,255,0.5);font-size:0.88rem;margin-bottom:24px;line-height:1.6;}
+  .modal-input{
+    width:100%;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:12px;
+    padding:13px 16px;
+    color:#fff;
+    font-size:1rem;
+    outline:none;
+    margin-bottom:12px;
+    text-align:center;
+    letter-spacing:3px;
+    font-family:'Segoe UI',sans-serif;
+  }
+  .modal-input:focus{border-color:#4ade80;}
+  .modal-input::placeholder{letter-spacing:1px;font-size:0.88rem;}
+  .modal-error{display:none;color:#f87171;font-size:0.82rem;margin-bottom:12px;padding:8px;background:rgba(248,113,113,0.1);border-radius:8px;}
+  .modal-btn{
+    width:100%;background:#4ade80;color:#0d1117;
+    padding:13px;border-radius:50px;
+    font-weight:700;border:none;cursor:pointer;
+    font-size:0.95rem;margin-bottom:10px;
+    transition:background 0.2s;
+    font-family:'Segoe UI',sans-serif;
+  }
+  .modal-btn:hover{background:#22c55e;}
+  .modal-cancel{background:none;border:none;color:rgba(255,255,255,0.35);cursor:pointer;font-size:0.85rem;transition:color 0.2s;}
+  .modal-cancel:hover{color:#fff;}
 
   /* ========== SKILLS PAGE ========== */
   .skills-intro{color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:40px;max-width:700px;}
@@ -88,7 +156,6 @@
   .sk-desc{font-size:0.85rem;color:rgba(255,255,255,0.58);line-height:1.6;}
   .sk-bar-wrap{margin-top:14px;height:4px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;}
   .sk-bar{height:100%;background:#4ade80;border-radius:4px;transition:width 1s ease;}
-
   .tools-title{font-size:1.4rem;font-weight:700;margin-bottom:20px;color:#fff;}
   .tools-grid{display:flex;flex-wrap:wrap;gap:12px;}
   .tool-badge{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:30px;padding:8px 18px;font-size:0.85rem;color:rgba(255,255,255,0.8);transition:all 0.2s;}
@@ -114,8 +181,6 @@
   .acard{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);border-radius:16px;padding:20px;}
   .acard-title{color:#4ade80;font-weight:600;margin-bottom:8px;font-size:0.95rem;}
   .acard-text{color:rgba(255,255,255,0.62);font-size:0.88rem;line-height:1.6;}
-
-  /* Timeline */
   .timeline{margin-top:48px;}
   .tl-title{font-size:1.4rem;font-weight:700;margin-bottom:24px;}
   .tl-item{display:flex;gap:24px;margin-bottom:28px;position:relative;}
@@ -145,7 +210,6 @@
   .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.3);}
   .btn-send{width:100%;background:#4ade80;color:#0d1117;padding:14px;border-radius:50px;font-weight:700;font-size:0.95rem;border:none;cursor:pointer;transition:background 0.2s;}
   .btn-send:hover{background:#22c55e;}
-  .success-msg{display:none;text-align:center;padding:14px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);border-radius:10px;color:#4ade80;margin-top:14px;font-size:0.92rem;}
 
   /* FOOTER */
   footer{text-align:center;padding:28px;color:rgba(255,255,255,0.28);font-size:0.82rem;background:rgba(0,0,0,0.28);}
@@ -202,6 +266,8 @@
         <div><div class="stat-num">2</div><div class="stat-label">Diplomas</div></div>
       </div>
     </div>
+
+    <!-- HERO RIGHT: Photo + Experience + CV Button -->
     <div class="hero-right">
       <div class="photo-wrap">
         <img src="photo.jpg" alt="Junnar Vitug" onerror="this.style.display='none';document.getElementById('hi').style.display='flex';"/>
@@ -209,8 +275,10 @@
       </div>
       <div class="exp-pill">
         <div class="num">7+</div>
-        <div class="lbl">Years of<br>Experience</div>
+        <div class="lbl">Years of Experience</div>
       </div>
+      <!-- ✅ CV DOWNLOAD BUTTON ADDED HERE (under photo) -->
+      <button class="cv-btn" onclick="openModal()">📄 Download My CV</button>
     </div>
   </div>
 
@@ -245,7 +313,6 @@
     <div class="tag">What I Bring</div>
     <div class="page-title">Skills & Expertise</div>
     <p class="skills-intro">With 7+ years in civil engineering and a growing passion for technology, I bring a unique combination of hands-on construction experience and modern tech skills to every project.</p>
-
     <div class="skills-grid">
       <div class="skill-card">
         <div class="sk-icon">🏗️</div>
@@ -284,7 +351,6 @@
         <div class="sk-bar-wrap"><div class="sk-bar" style="width:80%"></div></div>
       </div>
     </div>
-
     <div class="tools-title">Tools & Technologies</div>
     <div class="tools-grid">
       <div class="tool-badge">HTML5</div>
@@ -312,49 +378,25 @@
         <div class="proj-tag">Web Development</div>
         <div class="proj-title">Personal Portfolio Website</div>
         <div class="proj-desc">Designed and built this multi-page interactive portfolio from scratch using HTML, CSS and JavaScript. Deployed on GitHub Pages with a custom domain junnarvitug.com.</div>
-        <div class="proj-footer">
-          <div class="proj-tech">
-            <span class="tech-dot">HTML</span>
-            <span class="tech-dot">CSS</span>
-            <span class="tech-dot">JavaScript</span>
-          </div>
-        </div>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-dot">HTML</span><span class="tech-dot">CSS</span><span class="tech-dot">JavaScript</span></div></div>
       </div>
       <div class="proj-card">
         <div class="proj-tag">Civil Engineering</div>
         <div class="proj-title">High-Rise Building Construction</div>
         <div class="proj-desc">Led construction management as Project-in-Charge for a high-rise building in the Philippines. Oversaw quality control, scheduling, safety compliance, and team coordination.</div>
-        <div class="proj-footer">
-          <div class="proj-tech">
-            <span class="tech-dot">AutoCAD</span>
-            <span class="tech-dot">Project Mgmt</span>
-            <span class="tech-dot">QA/QC</span>
-          </div>
-        </div>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-dot">AutoCAD</span><span class="tech-dot">Project Mgmt</span><span class="tech-dot">QA/QC</span></div></div>
       </div>
       <div class="proj-card">
         <div class="proj-tag">Data Analytics</div>
         <div class="proj-title">Data Analysis Projects</div>
         <div class="proj-desc">Ongoing data analysis projects as part of MIS studies. Applying analytical mindset built over years of engineering to real-world datasets and business problems.</div>
-        <div class="proj-footer">
-          <div class="proj-tech">
-            <span class="tech-dot">Python</span>
-            <span class="tech-dot">Excel</span>
-            <span class="tech-dot">SQL</span>
-          </div>
-        </div>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-dot">Python</span><span class="tech-dot">Excel</span><span class="tech-dot">SQL</span></div></div>
       </div>
       <div class="proj-card">
         <div class="proj-tag">Quality Assurance</div>
         <div class="proj-title">QA/QC Implementation</div>
         <div class="proj-desc">Developed and implemented quality control systems for construction projects, ensuring materials and workmanship met national and international building standards.</div>
-        <div class="proj-footer">
-          <div class="proj-tech">
-            <span class="tech-dot">QA/QC</span>
-            <span class="tech-dot">Documentation</span>
-            <span class="tech-dot">Compliance</span>
-          </div>
-        </div>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-dot">QA/QC</span><span class="tech-dot">Documentation</span><span class="tech-dot">Compliance</span></div></div>
       </div>
     </div>
   </div>
@@ -365,7 +407,6 @@
   <div class="glass">
     <div class="tag">My Story</div>
     <div class="page-title">About Me</div>
-
     <div class="about-hero">
       <div class="about-photo">
         <img src="photo.jpg" alt="Junnar Vitug" onerror="this.style.display='none';document.getElementById('hi2').style.display='flex';"/>
@@ -376,14 +417,12 @@
         <p class="about-text" style="margin-top:16px;">Now based in Canada, I work in building maintenance while actively chasing my passion for Web Development and Data Analytics — blending my engineering discipline and analytical mindset with modern technology skills.</p>
       </div>
     </div>
-
     <div class="about-cards">
       <div class="acard"><div class="acard-title">🎓 Education</div><div class="acard-text">Bachelor of Science in Civil Engineering<br>BBA in Management Information Systems</div></div>
       <div class="acard"><div class="acard-title">📍 Location</div><div class="acard-text">Based in Canada<br>Originally from the Philippines</div></div>
       <div class="acard"><div class="acard-title">🚀 Currently</div><div class="acard-text">Building Maintenance & pursuing Web Dev + Data Analytics</div></div>
       <div class="acard"><div class="acard-title">🌐 Languages</div><div class="acard-text">Filipino (Native)<br>English (Fluent)</div></div>
     </div>
-
     <div class="timeline">
       <div class="tl-title">Career Timeline</div>
       <div class="tl-item">
@@ -414,7 +453,7 @@
     <div class="contact-wrap">
       <div class="contact-info">
         <p>Open to opportunities in web development, data analytics, or engineering-related roles in Canada. Feel free to reach out anytime!</p>
-        <a class="clink" href="mailto:your@email.com">
+        <a class="clink" href="mailto:skyrafael87@gmail.com">
           <div class="clink-icon">✉️</div>
           <div><div class="clink-label">Email</div><div class="clink-val">skyrafael87@gmail.com</div></div>
         </a>
@@ -422,35 +461,32 @@
           <div class="clink-icon">💼</div>
           <div><div class="clink-label">LinkedIn</div><div class="clink-val">linkedin.com/in/junnarvitug</div></div>
         </a>
-        <a class="clink" href="https://junnar21.github.io" target="_blank">
+        <a class="clink" href="https://github.com/Junnar21" target="_blank">
           <div class="clink-icon">💻</div>
-          <div><div class="clink-label">GitHub</div><div class="clink-val">https://github.com/Junnar21</div></div>
+          <div><div class="clink-label">GitHub</div><div class="clink-val">github.com/Junnar21</div></div>
         </a>
         <a class="clink" href="https://junnarvitug.com" target="_blank">
           <div class="clink-icon">🌐</div>
           <div><div class="clink-label">Website</div><div class="clink-val">junnarvitug.com</div></div>
         </a>
       </div>
-    
-<div class="contact-form">
-  <div class="form-title">Send a Message</div>
-  <form action="https://formspree.io/f/mwvywdwa" method="POST">
-    <div class="form-group">
-      <label>YOUR NAME</label>
-      <input type="text" name="name" placeholder="John Smith" required/>
-    </div>
-    <div class="form-group">
-      <label>EMAIL ADDRESS</label>
-      <input type="email" name="email" placeholder="john@email.com" required/>
-    </div>
-    <div class="form-group">
-      <label>MESSAGE</label>
-      <textarea name="message" placeholder="Hi Junnar, I'd like to connect..."></textarea>
-    </div>
-    <button class="btn-send" type="submit">Send Message 🚀</button>
-  </form>
-</div>
-        
+      <div class="contact-form">
+        <div class="form-title">Send a Message</div>
+        <form action="https://formspree.io/f/mwvywdwa" method="POST">
+          <div class="form-group">
+            <label>YOUR NAME</label>
+            <input type="text" name="name" placeholder="John Smith" required/>
+          </div>
+          <div class="form-group">
+            <label>EMAIL ADDRESS</label>
+            <input type="email" name="email" placeholder="john@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label>MESSAGE</label>
+            <textarea name="message" placeholder="Hi Junnar, I'd like to connect..."></textarea>
+          </div>
+          <button class="btn-send" type="submit">Send Message 🚀</button>
+        </form>
       </div>
     </div>
   </div>
@@ -458,21 +494,68 @@
 
 <footer>© 2026 Junnar Vitug. All rights reserved. | junnarvitug.com</footer>
 
+<!-- ✅ PASSWORD MODAL -->
+<div class="modal-overlay" id="cvModal">
+  <div class="modal-box">
+    <div class="modal-lock">🔒</div>
+    <h3>Protected Download</h3>
+    <p>Enter the password to download Junnar's CV</p>
+    <input class="modal-input" type="password" id="cvPassword"
+      placeholder="Enter password"
+      onkeypress="if(event.key==='Enter') checkPassword()"/>
+    <div class="modal-error" id="cvError">❌ Wrong password! Please try again.</div>
+    <button class="modal-btn" onclick="checkPassword()">Unlock & Download 🔓</button><br>
+    <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
 <script>
+  // ===== PAGE NAVIGATION =====
   function showPage(name) {
-    // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Remove active from all nav links
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    // Show target page
     document.getElementById('page-' + name).classList.add('active');
-    // Set active nav
     document.getElementById('nav-' + name).classList.add('active');
-    // Scroll to top
     window.scrollTo({top: 0, behavior: 'smooth'});
     return false;
   }
-   
+
+  // ===== CV PASSWORD PROTECTION =====
+  // 🔑 CHANGE THIS TO YOUR OWN SECRET PASSWORD!
+  const CV_PASSWORD = 'junnar2024';
+
+  function openModal() {
+    document.getElementById('cvModal').classList.add('show');
+    document.getElementById('cvPassword').value = '';
+    document.getElementById('cvError').style.display = 'none';
+    setTimeout(() => document.getElementById('cvPassword').focus(), 100);
+  }
+
+  function closeModal() {
+    document.getElementById('cvModal').classList.remove('show');
+  }
+
+  function checkPassword() {
+    const input = document.getElementById('cvPassword').value;
+    if (input === CV_PASSWORD) {
+      closeModal();
+      const link = document.createElement('a');
+      link.href = 'Junnar_CV.pdf';
+      link.download = 'Junnar_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      document.getElementById('cvError').style.display = 'block';
+      document.getElementById('cvPassword').value = '';
+      document.getElementById('cvPassword').focus();
+    }
+  }
+
+  // Close modal when clicking outside the box
+  document.getElementById('cvModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
 </script>
 </body>
 </html>
